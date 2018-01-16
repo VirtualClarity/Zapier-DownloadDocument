@@ -23,10 +23,7 @@ describe('searches', () => {
           results.length.should.be.aboveOrEqual(1);
 
           const result = results[0];
-          console.log(result);
-          result.style.should.eql('style 2');
-          should.exist(result.name);
-          should.exist(result.directions);
+          result.file.should.match(/^hydrate|||/);
 
           done();
         })

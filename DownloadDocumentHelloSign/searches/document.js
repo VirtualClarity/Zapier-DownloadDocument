@@ -23,26 +23,9 @@ module.exports = {
     ],
 
     perform: (z, bundle) => {
-      const url = 'https://api.hellosign.com/v3/signature_request/files/';
+		const url = 'https://api.hellosign.com/v3/signature_request/files/';
 
-      // Put the search value in a query param. The details of how to build
-      // a search URL will depend on how your API works.
-      //~ const options = {
-        //~ params: {
-          //~ search: bundle.inputData.signature_request_id
-        //~ }
-      //~ };
-
-      //~ return z.request(url + bundle.inputData.signature_request_id)
-        //~ .then(response => JSON.parse(response.content));
-
-		//~ return _.map(records, function(record) {
-		  //~ // if you just do url, we'll include any standard authentication headers
-		  //~ record.file = z.dehydrateFile('https://yoursite.com/files/download/' + bundle.inputData.signature_request_id);
-		  //~ return record;
-		//~ });
-		const fileRequest = z.request({url: url + bundle.inputData.signature_request_id, raw: true});
-		var result = [{ "file" : z.stashFile(fileRequest) }];
+		var result = [{ "file" : z.dehydrate(stashPDFfunction, bundle) }];
 		return result;
     },
     
@@ -50,12 +33,7 @@ module.exports = {
     // from the API, Zapier will fallback to this hard-coded sample. It should reflect the data structure of
     // returned records, and have obviously dummy values that we can show to any user.
     sample: {
-      id: 1,
-      createdAt: 1472069465,
-      name: 'Best Spagetti Ever',
-      authorId: 1,
-      directions: '1. Boil Noodles\n2.Serve with sauce',
-      style: 'italian'
+		file: "File object for use in other stpes of your Zap"
     },
 
     // If the resource can have fields that are custom on a per-user basis, define a function to fetch the custom
@@ -63,12 +41,7 @@ module.exports = {
     // outputFields: () => { return []; }
     // Alternatively, a static field definition should be provided, to specify labels for the fields
     outputFields: [
-      {key: 'id', label: 'ID'},
-      {key: 'createdAt', label: 'Created At'},
-      {key: 'name', label: 'Name'},
-      {key: 'directions', label: 'Directions'},
-      {key: 'authorId', label: 'Author ID'},
-      {key: 'style', label: 'Style'}
+      {key: 'file', label: 'File object for use in other steps of your Zap'}
     ]
   }
 };
