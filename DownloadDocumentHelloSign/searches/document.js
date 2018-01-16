@@ -27,14 +27,23 @@ module.exports = {
 
       // Put the search value in a query param. The details of how to build
       // a search URL will depend on how your API works.
-/*      const options = {
-        params: {
-          search: bundle.inputData.signature_request_id
-        }
-      };*/
+      //~ const options = {
+        //~ params: {
+          //~ search: bundle.inputData.signature_request_id
+        //~ }
+      //~ };
 
-      return z.request(url + bundle.inputData.signature_request_id)
-        .then(response => JSON.parse(response.content));
+      //~ return z.request(url + bundle.inputData.signature_request_id)
+        //~ .then(response => JSON.parse(response.content));
+
+		//~ return _.map(records, function(record) {
+		  //~ // if you just do url, we'll include any standard authentication headers
+		  //~ record.file = z.dehydrateFile('https://yoursite.com/files/download/' + bundle.inputData.signature_request_id);
+		  //~ return record;
+		//~ });
+		const fileRequest = z.request({url: url + bundle.inputData.signature_request_id, raw: true});
+		var result = [{ "file" : z.stashFile(fileRequest) }];
+		return result;
     },
     
     // In cases where Zapier needs to show an example record to the user, but we are unable to get a live example
