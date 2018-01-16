@@ -15,7 +15,7 @@ describe('searches', () => {
         }
       };
 
-      appTester(App.searches.recipe.operation.perform, bundle)
+      appTester(App.searches.get_document.operation.perform, bundle)
         .then(results => {
           results.length.should.be.aboveOrEqual(1);
 

@@ -1,4 +1,4 @@
-const search = require('./searches/recipe');
+const search = require('./searches/document');
 
 // Now we can roll up all our behaviors in an App.
 const App = {
