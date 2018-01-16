@@ -23,17 +23,17 @@ module.exports = {
     ],
 
     perform: (z, bundle) => {
-      const url = 'http://57b20fb546b57d1100a3c405.mockapi.io/api/recipes';
+      const url = 'https://api.hellosign.com/v3/signature_request/files/';
 
       // Put the search value in a query param. The details of how to build
       // a search URL will depend on how your API works.
-      const options = {
+/*      const options = {
         params: {
           search: bundle.inputData.signature_request_id
         }
-      };
+      };*/
 
-      return z.request(url, options)
+      return z.request(url + bundle.inputData.signature_request_id)
         .then(response => JSON.parse(response.content));
     },
     
