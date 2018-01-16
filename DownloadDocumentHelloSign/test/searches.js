@@ -22,10 +22,11 @@ describe('searches', () => {
         .then(results => {
           results.length.should.be.aboveOrEqual(1);
 
-          const firstRecipe = results[0];
-          firstRecipe.style.should.eql('style 2');
-          should.exist(firstRecipe.name);
-          should.exist(firstRecipe.directions);
+          const result = results[0];
+          console.log(result);
+          result.style.should.eql('style 2');
+          should.exist(result.name);
+          should.exist(result.directions);
 
           done();
         })
