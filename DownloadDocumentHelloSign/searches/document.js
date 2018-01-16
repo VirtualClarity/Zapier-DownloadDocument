@@ -3,10 +3,10 @@ module.exports = {
 
   // You'll want to provide some helpful display labels and descriptions
   // for users. Zapier will put them into the UX.
-  noun: 'Recipe',
+  noun: 'Document',
   display: {
-    label: 'Find a Recipe',
-    description: 'Search for recipe by cuisine style.'
+    label: 'Get a Document',
+    description: 'Retrieve the document for a specific signing request'
   },
 
   // `operation` is where we make the call to your API to do the search
@@ -15,10 +15,10 @@ module.exports = {
     // search fields.
     inputFields: [
       {
-        key: 'style',
+        key: 'signature_request_id',
         type: 'string',
-        label: 'Style',
-        helpText: 'Cuisine style to limit to the search to (i.e. mediterranean or italian).'
+        label: 'Signature Request ID',
+        helpText: 'The ID of the HelloSign signature request for which you want to retrieve a document'
       }
     ],
 
@@ -29,7 +29,7 @@ module.exports = {
       // a search URL will depend on how your API works.
       const options = {
         params: {
-          search: bundle.inputData.style
+          search: bundle.inputData.signature_request_id
         }
       };
 

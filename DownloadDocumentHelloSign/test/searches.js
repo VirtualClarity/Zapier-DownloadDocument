@@ -11,7 +11,7 @@ describe('searches', () => {
     it('should find a recipe', (done) => {
       const bundle = {
         inputData: {
-          style: 'style 2'
+          signature_request_id: 'style 2'
         }
       };
 

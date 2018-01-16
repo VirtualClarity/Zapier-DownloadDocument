@@ -1,5 +1,28 @@
 const search = require('./searches/document');
 
+const authentication = {
+  type: 'custom',
+  // "test" could also be a function
+  test: {
+    url:
+      'https://api.hellosign.com/v3/account'
+  },
+  fields: [
+    {
+      key: 'api_key',
+      type: 'string',
+      required: true,
+      helpText: 'Your HelloSign API key. Available in Settings > API'
+    }
+  ]
+};
+
+const addApiKeyToHeader = (request, z, bundle) => {
+  const basicHash = Buffer(`${bundle.authData.api_key}:`).toString('base64');
+  request.headers.Authorization = `Basic ${basicHash}`;
+  return request;
+};
+
 // Now we can roll up all our behaviors in an App.
 const App = {
   // This is just shorthand to reference the installed dependencies you have. Zapier will
@@ -7,9 +30,9 @@ const App = {
   version: require('./package.json').version,
   platformVersion: require('zapier-platform-core').version,
 
-  beforeRequest: [
-  ],
-
+  authentication: authentication,
+  beforeRequest: [addApiKeyToHeader],
+  
   afterResponse: [
   ],
 
