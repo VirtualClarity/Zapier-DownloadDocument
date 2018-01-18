@@ -87,8 +87,8 @@ const App = {
 		],
 
 		perform: (z, bundle) => {
-
-			var result = [{ "file" : z.dehydrate(stashPDFfunction, bundle.inputData.signature_request_id) }];
+			
+			var result = [{ "file" : z.dehydrate(stashPDFfunction, {signature_request_id: bundle.inputData.signature_request_id}) }];
 			return result;
 		},
 		
