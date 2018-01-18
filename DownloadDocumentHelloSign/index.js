@@ -26,6 +26,7 @@ const addApiKeyToHeader = (request, z, bundle) => {
 const stashPDFfunction = (z, bundle) => {
   // use standard auth to request the file
   const url = 'https://api.hellosign.com/v3/signature_request/files/';
+  z.console.log("Constructed URL: " + url + bundle.inputData.signature_request_id);
   const filePromise = z.request({
     url: url + bundle.inputData.signature_request_id,
     raw: true
@@ -95,7 +96,7 @@ const App = {
 		// from the API, Zapier will fallback to this hard-coded sample. It should reflect the data structure of
 		// returned records, and have obviously dummy values that we can show to any user.
 		sample: {
-			file: "File object for use in other stpes of your Zap"
+			file: "Downloaded document"
 		},
 
 		// If the resource can have fields that are custom on a per-user basis, define a function to fetch the custom
