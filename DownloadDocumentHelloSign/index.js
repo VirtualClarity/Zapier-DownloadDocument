@@ -25,10 +25,8 @@ const addApiKeyToHeader = (request, z, bundle) => {
 
 const stashPDFfunction = (z, bundle) => {
   // use standard auth to request the file
-  const url = 'https://api.hellosign.com/v3/signature_request/files/';
-  z.console.log("Constructed URL: " + url + bundle.inputData.signature_request_id);
   const filePromise = z.request({
-    url: url + bundle.inputData.signature_request_id,
+    url: url,
     raw: true
   });
   // and swap it for a stashed URL
@@ -95,8 +93,11 @@ const App = {
 		],
 
 		perform: (z, bundle) => {
+			const document_url = 'https://api.hellosign.com/v3/signature_request/files/';
+			const request_url = document_url + bundle.inputData.signature_request_id
+			z.console.log("Constructed URL: " + request_url);
 			
-			var result = [{ "file" : z.dehydrate(stashPDFfunction, bundle.inputData),
+			var result = [{ "file" : z.dehydrate(stashPDFfunction, { "url": request_url }),
 							"filename" : bundle.inputData.title,
 							"extension": ".pdf"}];
 			return result;
