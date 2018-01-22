@@ -23,18 +23,6 @@ const addApiKeyToHeader = (request, z, bundle) => {
   return request;
 };
 
-const stashPDFfunction = (z, bundle) => {
-  // use standard auth to request the file
-  const url = 'https://api.hellosign.com/v3/signature_request/files/';
-  z.console.log("Constructed URL: " + url + bundle.inputData.signature_request_id);
-  const filePromise = z.request({
-    url: url + bundle.inputData.signature_request_id,
-    raw: true
-  });
-  // and swap it for a stashed URL
-  return z.stashFile(filePromise);
-};
-
 // Now we can roll up all our behaviors in an App.
 const App = {
   // This is just shorthand to reference the installed dependencies you have. Zapier will
