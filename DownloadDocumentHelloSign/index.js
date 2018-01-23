@@ -68,7 +68,7 @@ const App = {
 	  noun: 'Document',
 	  display: {
 		label: 'Get a Document',
-		description: 'Retrieve the document for a specific signing request'
+		description: 'Retrieve the document for a specific signing request - PUT A 10 MIN DELAY IN BEFORE THIS STEP'
 	  },
 
 	  // `operation` is where we make the call to your API to do the search
