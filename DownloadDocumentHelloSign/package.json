@@ -1,17 +1,17 @@
 {
-  "name": "zapier-platform-example-app-search",
-  "version": "1.0.0",
-  "description": "An example app for the Zapier platform.",
+  "name": "download-document-hello-sign",
+  "version": "1.0.1",
+  "description": "Allows you to retrieve a document from HelloSign",
   "repository": "zapier/zapier-platform-example-app-search",
   "homepage": "https://zapier.com/",
-  "author": "Bryan Helmig <bryan@zapier.com>",
+  "author": "Ian Gibbs <ian.gibbs@virtualclarity.com.com>",
   "license": "BSD-3-Clause",
   "main": "index.js",
   "scripts": {
     "test": "node node_modules/mocha/bin/mocha --recursive"
   },
   "engines": {
-    "node": "6.10.2",
+    "node": "8.10.0",
     "npm": ">=3.10.10"
   },
   "dependencies": {
