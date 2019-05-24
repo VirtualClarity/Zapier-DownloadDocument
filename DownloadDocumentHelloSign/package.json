@@ -1,6 +1,6 @@
 {
   "name": "download-document-hello-sign",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Allows you to retrieve a document from HelloSign",
   "repository": "zapier/zapier-platform-example-app-search",
   "homepage": "https://zapier.com/",
@@ -15,7 +15,7 @@
     "npm": ">=3.10.10"
   },
   "dependencies": {
-    "zapier-platform-core": "4.2.3"
+    "zapier-platform-core": "8.1.0"
   },
   "devDependencies": {
     "mocha": "3.2.0",
